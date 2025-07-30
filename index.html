@@ -3,7 +3,7 @@
 <h4 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h4>
 </li>
 </ul>
-<div class="tip"><strong>声明</strong><br>首先我要说明，这篇文章更倾向于是一篇博客搭建经历，可能并不能作为一个很好的教程。</div>
+<div class="tip"><strong>声明</strong><br><br>这篇文章更倾向于是一篇博客搭建经历，可能并不能作为一个很好的教程。<br>全文涉及网站大多均为英语，不善英语者可安装翻译器浏览器插件</div>
 <p>我很早之前就有过一个想要搭建自己博客的想法，但因为电脑是32位一直没能实现。<br />
 直到这天，我突然想起我的树莓派，它事 64 位的，也就是说它可以完成这些操作，于是我便开始了实践……</p>
 <hr />
@@ -12,20 +12,25 @@
 <h4 id="准备工作"><a class="markdownIt-Anchor" href="#准备工作"></a> 准备工作</h4>
 </li>
 </ul>
+<p>如果您已经完成以下准备工作，可以直接从<a href="#%E9%85%8D%E7%BD%AE%EF%BC%88%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%89Hexo%E5%8D%9A%E5%AE%A2">配置（初始化）Hexo博客</a>开始。</p>
 <ol>
-<li>安装git，这里没什么要说的，直接去<a target="_blank" rel="noopener" href="https://git-scm.com/">官网</a>下载安装就好了。</li>
-<li>安装Node.js，这也直接去<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">官网</a>下载安装就好了。</li>
+<li>去<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">git官网</a>下载安装git。</li>
+<li>去<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download">Node.js官网</a>下载安装Node.js，其中最后一个空建议选<code>npm</code>，方便后续操作。</li>
 <li>注册github账号：
 <ol>
-<li>打开<a target="_blank" rel="noopener" href="https://github.com">github官网</a>。如果打不开或者加载很慢的话，可以搜索<code>steam++</code>；实在不行就自行百度其他方法吧。</li>
-<li>点击左上角的<code>sign up</code>。<img src="%E7%82%B9%E5%87%BB%E6%B3%A8%E5%86%8C.png" alt="点击注册" /></li>
-<li></li>
+<li>打开<a target="_blank" rel="noopener" href="https://github.com/signup">github注册页</a>。如果打不开或者加载很慢的话，可以搜索<code>steam++</code>；实在不行就自行百度其他方法吧。</li>
+<li>如图填写相应内容进行注册。其中邮箱的话QQ邮箱就行（对于没有邮箱的人群），至于如何注册邮箱，请自行百度。最好（或是说一定）不要用临时邮箱！<img src="%E5%A1%AB%E5%86%99%E6%B3%A8%E5%86%8C_E.png" alt="填写注册_E" /></li>
 </ol>
 </li>
+<li>打开命令行，输入<code>npm install -g hexo-cli</code>安装Hexo。</li>
 </ol>
 <ul>
 <li>
-<h4 id="安装hexo"><a class="markdownIt-Anchor" href="#安装hexo"></a> 安装Hexo</h4>
+<h4 id="配置初始化hexo博客"><a class="markdownIt-Anchor" href="#配置初始化hexo博客"></a> 配置（初始化）Hexo博客</h4>
 </li>
 </ul>
-</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2025-07-29</span><i class="fa fa-tag"></i><a class="tag" href="/tags/编程/" title="编程">编程 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/日常记录/" title="日常记录">日常记录 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/笔记/" title="笔记">笔记 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/教程/" title="教程">教程 </a><span>大约235个字, 47秒读完</span></div></div></div></div></div></div></div></main-outlet><script>(async function(){ if (Anatolo.search == null) await Anatolo.getMsg("search-init"); Anatolo.search.config = {translation:{posts:"文章",pages:"页面",categories:"分类",tags:"标签",untitled:"(无标题)",} }; })()</script><div class="searchbox ins-search modal-cover"><div class="searchbox-container ins-search-container modal-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="Anatolo.search.closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div><button class="float-button hide" id="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" type="button" title="回到顶部"><i class="fa fa-angle-up"></i></button><div class="modal-cover" id="success-indicator"><div class="modal-container indicator"><i class="fa fa-check"></i></div></div></body></html>
+<p>完成准备工作之后，就可以初始化博客了。</p>
+<ol>
+<li>在任意地方新建一个文件夹（也可以不新建，但请确保你所创建博客的文件夹内是空的）。</li>
+</ol>
+</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2025-07-29</span><i class="fa fa-tag"></i><a class="tag" href="/tags/编程/" title="编程">编程 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/日常记录/" title="日常记录">日常记录 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/笔记/" title="笔记">笔记 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/教程/" title="教程">教程 </a><span>大约427个字, 1分钟25秒读完</span></div></div></div></div></div></div></div></main-outlet><script>(async function(){ if (Anatolo.search == null) await Anatolo.getMsg("search-init"); Anatolo.search.config = {translation:{posts:"文章",pages:"页面",categories:"分类",tags:"标签",untitled:"(无标题)",} }; })()</script><div class="searchbox ins-search modal-cover"><div class="searchbox-container ins-search-container modal-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="Anatolo.search.closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div><button class="float-button hide" id="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" type="button" title="回到顶部"><i class="fa fa-angle-up"></i></button><div class="modal-cover" id="success-indicator"><div class="modal-container indicator"><i class="fa fa-check"></i></div></div></body></html>
