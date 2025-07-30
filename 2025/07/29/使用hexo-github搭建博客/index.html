@@ -17,25 +17,44 @@
 <h4 id="准备工作"><a class="markdownIt-Anchor" href="#准备工作"></a> 准备工作</h4>
 </li>
 </ul>
-<p>如果您已经完成以下准备工作，可以直接从<a href="#%E9%85%8D%E7%BD%AE%EF%BC%88%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%89Hexo%E5%8D%9A%E5%AE%A2">配置（初始化）Hexo博客</a>开始。</p>
+<p>如果您已经完成以下准备工作，可以直接从<a href="#%E9%85%8D%E7%BD%AE%E5%88%9D%E5%A7%8B%E5%8C%96hexo%E5%8D%9A%E5%AE%A2">配置（初始化）Hexo博客</a>开始。</p>
 <ol>
-<li>去<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">git官网</a>下载安装git。</li>
-<li>去<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download">Node.js官网</a>下载安装Node.js，其中最后一个空建议选<code>npm</code>，方便后续操作。</li>
-<li>注册github账号：
+<li>
+<p>去<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">git官网</a>下载安装git。</p>
+</li>
+<li>
+<p>去<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download">Node.js官网</a>下载安装Node.js，其中最后一个空建议选<code>npm</code>，方便后续操作。</p>
+</li>
+<li>
+<p>注册github账号：</p>
 <ol>
-<li>打开<a target="_blank" rel="noopener" href="https://github.com/signup">github注册页</a>。如果打不开或者加载很慢的话，可以搜索<code>steam++</code>；实在不行就自行百度其他方法吧。</li>
-<li>如图填写相应内容进行注册。其中邮箱的话QQ邮箱就行（对于没有邮箱的人群），至于如何注册邮箱，请自行百度。最好（或是说一定）不要用临时邮箱！<img src="%E5%A1%AB%E5%86%99%E6%B3%A8%E5%86%8C_E.png" alt="填写注册_E" /></li>
+<li>
+<p>打开<a target="_blank" rel="noopener" href="https://github.com/signup">github注册页</a>。如果打不开或者加载很慢的话，可以搜索<code>steam++</code>；实在不行就自行百度其他方法吧。</p>
+</li>
+<li>
+<p>如图填写相应内容进行注册。其中邮箱的话QQ邮箱就行（对于没有邮箱的人群），至于如何注册邮箱，请自行百度。最好（或是说一定）不要用临时邮箱！<img src="%E5%A1%AB%E5%86%99%E6%B3%A8%E5%86%8C_E.png" alt="填写注册_E" /></p>
+</li>
 </ol>
 </li>
-<li>打开命令行，输入<code>npm install -g hexo-cli</code>安装Hexo。</li>
+<li>
+<p>打开命令行（<code>Windows</code>就按快捷键<code>win + R</code>调出运行框，输入<code>CMD</code>，其他系统不赘述），输入以下命令，安装Hexo。</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <ul>
 <li>
-<h4 id="配置初始化hexo博客"><a class="markdownIt-Anchor" href="#配置初始化hexo博客"></a> 配置（初始化）Hexo博客</h4>
+<h4 id="配置hexo博客"><a class="markdownIt-Anchor" href="#配置hexo博客"></a> 配置Hexo博客</h4>
 </li>
 </ul>
 <p>完成准备工作之后，就可以初始化博客了。</p>
 <ol>
-<li>在任意地方新建一个文件夹（也可以不新建，但请确保你所创建博客的文件夹内是空的）。</li>
+<li>
+<p>在任意地方新建一个文件夹（也可以不新建，但请确保你所创建博客的文件夹内是空的）。</p>
+</li>
+<li>
+<p>打开命令行（别关，后面都会用到），输入下面这行代码，转到你要创建博客的地址并初始化博客。</p>
+</li>
 </ol>
-</p></div><div class="post-footer"><div class="tip">本文采用CC-BY-SA-3.0协议，转载请注明出处<br>作者: Czihan</div><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2025-07-29</span><i class="fa fa-tag"></i><a class="tag" href="/tags/编程/" title="编程">编程 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/日常记录/" title="日常记录">日常记录 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/笔记/" title="笔记">笔记 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/教程/" title="教程">教程 </a><span>大约427个字, 1分钟25秒读完</span></div></div></div></div><div class="share"><div class="share-btn linkonly"><a class="fa fa-link" onclick="Utils.copyToClipboard(window.location.href)" ref="sidebar"></a></div><div class="share-btn evernote"><a class="fa fa-share" onclick="Anatolo.share.native()" ref="sidebar"></a></div><div class="share-btn weibo"><a class="fab fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="share-btn twitter"><a class="fab fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/intent/tweet?text=%E5%88%86%E4%BA%AB%E6%96%87%E7%AB%A0%EF%BC%9A%0A%0ACzihan's%20Blog%20%C2%B7%20%E4%BD%BF%E7%94%A8Hexo%20+%20Github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%0Ahttps://czihan-create.github.io/2025/07/29/%E4%BD%BF%E7%94%A8hexo-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%0A"></a></div><div class="share-btn mastodon"><a class="fab fa-mastodon" target="_blank" rel="noopener" href="https://mastodonshare.com/?text=%E5%88%86%E4%BA%AB%E6%96%87%E7%AB%A0%EF%BC%9A%0A%0ACzihan's%20Blog%20%C2%B7%20%E4%BD%BF%E7%94%A8Hexo%20+%20Github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%0Ahttps://czihan-create.github.io/2025/07/29/%E4%BD%BF%E7%94%A8hexo-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%0A"></a></div></div><div class="pagination"><ul class="clearfix"></ul></div><script>Anatolo.comment.setConfig({"valine":{"enable":false,"appid":null,"appkey":null,"notify":false,"verify":false,"avatar":"mm","placeholder":"hello, world"},"gitment":{"enable":false,"owner":"Your GitHub ID","repo":"Repo to store comments","client_id":"Your client ID","client_secret":"Your client secret"},"gitalk":{"enable":false,"owner":"Your GitHub ID","repo":"Repo to store comments","client_id":"Your client ID","client_secret":"Your client secret"},"duoshuo":null,"disqus":null,"gentie":null})</script></div></div></div></div></main-outlet><script>(async function(){ if (Anatolo.search == null) await Anatolo.getMsg("search-init"); Anatolo.search.config = {translation:{posts:"文章",pages:"页面",categories:"分类",tags:"标签",untitled:"(无标题)",} }; })()</script><div class="searchbox ins-search modal-cover"><div class="searchbox-container ins-search-container modal-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="Anatolo.search.closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div><button class="float-button hide" id="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" type="button" title="回到顶部"><i class="fa fa-angle-up"></i></button><div class="modal-cover" id="success-indicator"><div class="modal-container indicator"><i class="fa fa-check"></i></div></div></body></html>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> 你文件夹相对或绝对地址</span><br><span class="line"><span class="built_in">cd</span> hexo init (这里也可以加上文件夹的绝对路径)</span><br></pre></td></tr></table></figure>
+<p>如果你不清楚什么是相对地址或者不会获取，建议写绝对地址。绝对地址一般打开这个文件夹时地址栏显示的就是；或者右键该文件夹，查看详细信息或属性（类似），绝对路径应该会在里面。</p>
+</p></div><div class="post-footer"><div class="tip">本文采用CC-BY-SA-3.0协议，转载请注明出处<br>作者: Czihan</div><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2025-07-29</span><i class="fa fa-tag"></i><a class="tag" href="/tags/编程/" title="编程">编程 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/日常记录/" title="日常记录">日常记录 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/笔记/" title="笔记">笔记 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/教程/" title="教程">教程 </a><span>大约613个字, 2分钟2秒读完</span></div></div></div></div><div class="share"><div class="share-btn linkonly"><a class="fa fa-link" onclick="Utils.copyToClipboard(window.location.href)" ref="sidebar"></a></div><div class="share-btn evernote"><a class="fa fa-share" onclick="Anatolo.share.native()" ref="sidebar"></a></div><div class="share-btn weibo"><a class="fab fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="share-btn twitter"><a class="fab fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/intent/tweet?text=%E5%88%86%E4%BA%AB%E6%96%87%E7%AB%A0%EF%BC%9A%0A%0ACzihan's%20Blog%20%C2%B7%20%E4%BD%BF%E7%94%A8Hexo%20+%20Github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%0Ahttps://czihan-create.github.io/2025/07/29/%E4%BD%BF%E7%94%A8hexo-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%0A"></a></div><div class="share-btn mastodon"><a class="fab fa-mastodon" target="_blank" rel="noopener" href="https://mastodonshare.com/?text=%E5%88%86%E4%BA%AB%E6%96%87%E7%AB%A0%EF%BC%9A%0A%0ACzihan's%20Blog%20%C2%B7%20%E4%BD%BF%E7%94%A8Hexo%20+%20Github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%0Ahttps://czihan-create.github.io/2025/07/29/%E4%BD%BF%E7%94%A8hexo-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%0A"></a></div></div><div class="pagination"><ul class="clearfix"></ul></div><script>Anatolo.comment.setConfig({"valine":{"enable":false,"appid":null,"appkey":null,"notify":false,"verify":false,"avatar":"mm","placeholder":"hello, world"},"gitment":{"enable":false,"owner":"Your GitHub ID","repo":"Repo to store comments","client_id":"Your client ID","client_secret":"Your client secret"},"gitalk":{"enable":false,"owner":"Your GitHub ID","repo":"Repo to store comments","client_id":"Your client ID","client_secret":"Your client secret"},"duoshuo":null,"disqus":null,"gentie":null})</script></div></div></div></div></main-outlet><script>(async function(){ if (Anatolo.search == null) await Anatolo.getMsg("search-init"); Anatolo.search.config = {translation:{posts:"文章",pages:"页面",categories:"分类",tags:"标签",untitled:"(无标题)",} }; })()</script><div class="searchbox ins-search modal-cover"><div class="searchbox-container ins-search-container modal-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="Anatolo.search.closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div><button class="float-button hide" id="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" type="button" title="回到顶部"><i class="fa fa-angle-up"></i></button><div class="modal-cover" id="success-indicator"><div class="modal-container indicator"><i class="fa fa-check"></i></div></div></body></html>
