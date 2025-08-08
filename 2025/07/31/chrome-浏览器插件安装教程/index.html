@@ -112,16 +112,20 @@
         <textarea id="content" placeholder="评论内容" rows="8" cols="68" required></textarea>
         <button onclick="submitComment()">发布评论</button>
     </div>
-    <div class="comment-list" id="comments">评论加载中……</div><br>
-    <noscript>由于禁用了javascript，所以无法正常加载评论，请打开javascript后刷新试试。</noscript><hr>
-    <p>由于技术限制，暂时只支持显示最近的100条评论，且不支持回复别人的评论和分页展示，请见谅。</p>
+    <div class="comment-list" id="comments">评论加载中……</div>
+    <noscript>由于禁用了 javascript，所以无法正常加载评论，请打开 javascript 后刷新试试。</noscript><hr>
+    <button onclick="last()">上一页</button>
+    <button onclick="next()">下一页</button>
+    <p>由于技术限制（我不会写），不支持回复别人的评论，请见谅。</p>
     <button onclick="loadComments()">刷新评论</button>
 
     <script>
+        window.page = 1;
         const baseUrl = 'https://tinywebdb.appinventor.space/api';
         const user = 'comment';
         const secret = '94c2b464';
         const defaultAvatar = 'https://res.126.net/cross/avatar_uploader/noface_new.gif';
+        const tagPrefix = CryptoJS.SHA256(window.location.href).toString();
 
         async function submitComment() {
             const nickname = document.getElementById('nickname').value.trim() || '匿名用户';
@@ -135,7 +139,7 @@
             }
 
             if (content.length > 100000) {
-                alert('评论内容超过100000个字符，请缩短内容');
+                alert('评论内容超过 100000 个字符，请缩短内容');
                 return;
             }
 
@@ -144,7 +148,7 @@
                 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
                 let result = '';
                 for (let i = 10; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
-                tag = `${CryptoJS.SHA256(window.location.href).toString()}${result}`;
+                tag = `${tagPrefix}${result}`;
                 try {
                     const response = await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=get&tag=${encodeURIComponent(tag)}`);
                     const data = await response.json();
@@ -173,8 +177,9 @@
                 contact, 
                 avatar, 
                 content: content
-                   .replace(/<|>\n/g, '<p>')
-                   .replace(/\n|\r\n/g, '<br>'), 
+                    .replace(/<|>\n/g, '<p>')
+                    .replace(/\n/g, '</p>')
+                    .replace(/\n|\r\n/g, '<br>'), 
                 timestamp 
             };
 
@@ -195,9 +200,8 @@
         }
 
         async function loadComments() {
-            const tagPrefix = CryptoJS.SHA256(window.location.href).toString();
             try {
-                const response = await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=search&tag=${tagPrefix}&type=value&count=100`);
+                const response = await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=search&tag=${tagPrefix}&type=value&count=2&no=${window.page}`);
                 const data = await response.json();
                 if (!data || data.value === null || !Array.isArray(data.value)) {
                     document.getElementById('comments').innerHTML = '<p>暂无评论</p>';
@@ -215,7 +219,7 @@
                             <img src="${comment.avatar}" alt="${comment.nickname}'s Avatar" class="comment-avatar">
                             <div class="comment-content">
                                 <strong>${comment.nickname}</strong><br><br>
-                                ${comment.content}<br><hr>
+                                ${comment.content}<hr>
                                 <small>联系方式：${comment.contact}<br>发布于 ${new Date(comment.timestamp).toLocaleString()}</small>
                             </div>
                         `;
@@ -229,18 +233,25 @@
                 document.getElementById('comments').innerHTML = '<p>加载评论失败</p>';
             }
         }
-        async function sha256(message) {
-            // 将输入的字符串编码为UTF-8格式的ArrayBuffer
-            const msgBuffer = new TextEncoder().encode(message); 
-
-            // 使用SubtleCrypto API计算SHA-256哈希
-            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-
-            // 将返回的ArrayBuffer转换为一个16进制字符串
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-
-            return hashHex;
+        async function last() {
+            if (window.page > 15){
+                window.page -= 15;
+                loadComments();
+            }else{
+                alert("已经是第一页了");
+            }
+            return;
+        }
+        async function next() {
+                const response = await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=search&tag=${tagPrefix}&type=value&count=2&no=${window.page+15}`);
+                const data = await response.json();
+                if (!data || data.value === null || !Array.isArray(data.value)) {
+                    alert("已经是最后一页了");
+                    return;
+                }
+            window.page += 15;
+            loadComments();
+            return;
         }
         // 加载初始评论
         loadComments();
