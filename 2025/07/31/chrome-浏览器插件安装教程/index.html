@@ -102,6 +102,7 @@
     </style>
 </head>
 <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
     <h1>评论</h1>
     <div class="comment-form">
         <input type="text" id="nickname" placeholder="昵称">
@@ -142,8 +143,8 @@
             while (true) {
                 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
                 let result = '';
-                for (let i = 4; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
-                tag = `${sha256(window.location.href).then(hash => console.log("SHA-256:", hash))}${result}`;
+                for (let i = 10; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+                tag = `${CryptoJS.SHA256(window.location.href).toString()}${result}`;
                 try {
                     const response = await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=get&tag=${encodeURIComponent(tag)}`);
                     const data = await response.json();
@@ -194,11 +195,8 @@
         }
 
         async function loadComments() {
-            const tagPrefix = sha256(window.location.href).then(hash => console.log("SHA-256:", hash));
+            const tagPrefix = CryptoJS.SHA256(window.location.href).toString();
             try {
-                //const count= await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=count`, {
-                //   method: 'GET'
-                //});
                 const response = await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=search&tag=${tagPrefix}&type=value&count=100`);
                 const data = await response.json();
                 if (!data || data.value === null || !Array.isArray(data.value)) {
