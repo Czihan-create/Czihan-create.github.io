@@ -232,7 +232,7 @@ Google 浏览器推荐使用 <a target="_blank" rel="noopener" href="https://chr
 
         async function loadComments() {
             try {
-                const response = await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=search&tag=${tagPrefix}&type=value&count=15&no=${window.page}`);
+                const response = await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=search&tag=${tagPrefix}&type=value&count=10&no=${window.page}`);
                 const data = await response.json();
                 if (!data || data.value === null || !Array.isArray(data.value)) {
                     document.getElementById('comments').innerHTML = '<p>暂无评论</p>';
@@ -265,8 +265,8 @@ Google 浏览器推荐使用 <a target="_blank" rel="noopener" href="https://chr
             }
         }
         async function last() {
-            if (window.page > 15){
-                window.page -= 15;
+            if (window.page > 10){
+                window.page -= 10;
                 loadComments();
             }else{
                 alert("已经是第一页了");
@@ -274,13 +274,13 @@ Google 浏览器推荐使用 <a target="_blank" rel="noopener" href="https://chr
             return;
         }
         async function next() {
-                const response = await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=search&tag=${tagPrefix}&type=value&count=15&no=${window.page+15}`);
+                const response = await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=search&tag=${tagPrefix}&type=value&count=10&no=${window.page+10}`);
                 const data = await response.json();
                 if (!data || data.value === null || !Array.isArray(data.value)) {
                     alert("已经是最后一页了");
                     return;
                 }
-            window.page += 15;
+            window.page += 10;
             loadComments();
             return;
         }
