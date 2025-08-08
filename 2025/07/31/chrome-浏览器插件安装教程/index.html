@@ -113,7 +113,7 @@
     </div>
     <div class="comment-list" id="comments">评论加载中……</div><br>
     <noscript>由于禁用了javascript，所以无法正常加载评论，请打开javascript后刷新试试。</noscript><hr>
-    <p>由于技术限制，暂时只支持显示最近的10000条评论，且不支持回复别人的评论和分页展示，请见谅。</p>
+    <p>由于技术限制，暂时只支持显示最近的100条评论，且不支持回复别人的评论和分页展示，请见谅。</p>
     <button onclick="loadComments()">刷新评论</button>
 
     <script>
@@ -124,7 +124,7 @@
 
         async function submitComment() {
             const nickname = document.getElementById('nickname').value.trim() || '匿名用户';
-            const contact = document.getElementById('contact').value.trim();
+            const contact = document.getElementById('contact').value.trim() || '无';
             const avatarInput = document.getElementById('avatar').value.trim();
             const content = document.getElementById('content').value.trim();
 
@@ -140,7 +140,10 @@
 
             let tag;
             while (true) {
-                tag = `${window.location.href}_${Math.floor(Math.random() * 1000000)}`;
+                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                let result = '';
+                for (let i = 4; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+                tag = `${sha256(window.location.href).then(hash => console.log("SHA-256:", hash))}${result}`;
                 try {
                     const response = await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=get&tag=${encodeURIComponent(tag)}`);
                     const data = await response.json();
@@ -169,6 +172,7 @@
                 contact, 
                 avatar, 
                 content: content
+                   .replace(/<|>\n/g, '<p>')
                    .replace(/\n|\r\n/g, '<br>'), 
                 timestamp 
             };
@@ -190,13 +194,12 @@
         }
 
         async function loadComments() {
-            const tagPrefix = encodeURIComponent(window.location.href);
-
+            const tagPrefix = sha256(window.location.href).then(hash => console.log("SHA-256:", hash));
             try {
                 //const count= await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=count`, {
                 //   method: 'GET'
                 //});
-                const response = await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=search&tag=${tagPrefix}&type=value&count=10000`);
+                const response = await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=search&tag=${tagPrefix}&type=value&count=100`);
                 const data = await response.json();
                 if (!data || data.value === null || !Array.isArray(data.value)) {
                     document.getElementById('comments').innerHTML = '<p>暂无评论</p>';
@@ -227,6 +230,19 @@
                 console.error('Error loading comments:', error);
                 document.getElementById('comments').innerHTML = '<p>加载评论失败</p>';
             }
+        }
+        async function sha256(message) {
+            // 将输入的字符串编码为UTF-8格式的ArrayBuffer
+            const msgBuffer = new TextEncoder().encode(message); 
+
+            // 使用SubtleCrypto API计算SHA-256哈希
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+
+            // 将返回的ArrayBuffer转换为一个16进制字符串
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+            return hashHex;
         }
         // 加载初始评论
         loadComments();
