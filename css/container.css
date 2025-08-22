@@ -10,7 +10,7 @@
   background-color: #fafafa;
 }
 
-p.admonition-title {
+p.title {
   position: relative;
   margin: -.6rem -.6rem .8em -.6rem !important;
   padding: .4rem .6rem .4rem 2.5rem;
@@ -18,7 +18,7 @@ p.admonition-title {
   background-color:rgba(66, 185, 131, .1);
 }
 
-.admonition-title::before {
+.title::before {
   position: absolute;
   top: .9rem;
   left: 1rem;
@@ -29,15 +29,15 @@ p.admonition-title {
   content: ' ';
 }
 
-.info>.admonition-title, .todo>.admonition-title {
+.info>.title, .todo>.title {
   background-color: rgba(0,184,212,.1);
 }
 
-.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+.warning>.title, .attention>.title, .caution>.title {
   background-color: rgba(255,145,0,.1);
 }
 
-.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+.failure>.title, .missing>.title, .fail>.title, .error>.title {
   background-color: rgba(255,82,82,.1);
 }
 
@@ -53,17 +53,17 @@ p.admonition-title {
   border-color: #ff5252;
 }
 
-.info>.admonition-title::before, .todo>.admonition-title::before {
+.info>.title::before, .todo>.title::before {
   background-color: #00b8d4;
   border-radius: 50%;
 }
 
-.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+.warning>.title::before, .attention>.title::before, .caution>.title::before {
   background-color: #ff9100;
   border-radius: 50%;
 }
 
-.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+.failure>.title::before,.missing>.title::before,.fail>.title::before,.error>.title::before{
   background-color: #ff5252;;
   border-radius: 50%;
 }
