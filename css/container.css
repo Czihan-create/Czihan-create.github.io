@@ -71,3 +71,12 @@ p.title {
 .admonition>:last-child {
   margin-bottom: 0 !important;
 }
+
+/*引用样式的更改*/
+blockquote {
+  box-sizing: border-box;
+  margin: 1.6em 0 1.6em 0em;
+  padding: 0 0 0 1.6em;
+  border-left: #eee 0.3em solid !important;
+  background-color: cssrgba(var(--primary-rgb), 0.03);
+}
