@@ -1,11 +1,7 @@
 /* 强制 Live2D 显示在右下角，防遮挡 */
 #waifu {
-  position: sticky;
-  top: 0; /* 当滚动到顶部时，元素会固定在这里 */
-  
   /* 强制定位 */
   position: fixed !important;
-  bottom: 0 !important;
   right: 25px !important;
   top: auto !important;
   left: auto !important;
