@@ -1,0 +1,22 @@
+/* Live2D 看板娘防遮挡样式 */
+#live2d-widget,
+#live2d {
+  z-index: 99999 !important;
+  position: fixed !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+}
+
+/* 确保父容器不裁剪 */
+body, html {
+  overflow-x: hidden !important;
+}
+
+/* 防止被某些主题的 fixed 元素盖住（如顶部导航） */
+.header, .navbar, .sidebar, .fixed-top {
+  z-index: 999 !important;
+}
