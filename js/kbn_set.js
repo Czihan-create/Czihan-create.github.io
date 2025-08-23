@@ -5,8 +5,8 @@ window.widget = {
   },
   display: {
     position: 'right',
-    width: 150,
-    height: 250,
+//    width: 250,
+//    height: 250,
     hOffset: 30,
     vOffset: 50
   },
