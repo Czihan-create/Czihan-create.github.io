@@ -1,22 +1,31 @@
-/* Live2D 看板娘防遮挡样式 */
+/* 强制 Live2D 显示在右下角，防遮挡 */
 #live2d-widget,
 #live2d {
-  z-index: 99999 !important;
+  /* 强制定位 */
   position: fixed !important;
   bottom: 0 !important;
   right: 0 !important;
-  pointer-events: auto !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+  top: auto !important;
+  left: auto !important;
+
+  /* 层级最高 */
+  z-index: 999999 !important;
+
+  /* 防止被裁剪 */
   overflow: visible !important;
+  pointer-events: auto !important;
+
+  /* 确保可见 */
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  /* 避免被 transform 影响 */
+  transform: none !important;
+  will-change: auto !important;
 }
 
-/* 确保父容器不裁剪 */
+/* 防止父容器裁剪 */
 body, html {
   overflow-x: hidden !important;
-}
-
-/* 防止被某些主题的 fixed 元素盖住（如顶部导航） */
-.header, .navbar, .sidebar, .fixed-top {
-  z-index: 999 !important;
+  /* 不要给 body 加 transform、perspective 等 */
 }
