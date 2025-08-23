@@ -6,14 +6,12 @@ setTimeout(() => {
     return;
   }
   // 1. 移到 body 最外层，避免被容器裁剪
-  document.body.appendChild(canvas);
+  //document.body.appendChild(canvas);
   // 2. 强制样式
   Object.assign(canvas.style, {
     'position': 'fixed',
-    'bottom': (window.widget.display.vOffset || 50) + 'px',
+    'bottom': (window.widget.display.vOffset || 0) + 'px',
     'right': (window.widget.display.hOffset || 30) + 'px',
-    //'width': (window.widget.display.width || 250) + 'px',
-    //'height': (window.widget.display.height || 250) + 'px',
     'z-index': '999999',
     'pointer-events': 'auto',
     'opacity': '1',
@@ -23,8 +21,8 @@ setTimeout(() => {
   //    因为 @0 版本没有公开 resize API，我们模拟 resize 事件
   window.dispatchEvent(new Event('resize'));
   // 4. 再次强制重绘（可选）
-  setTimeout(() => {
-    window.dispatchEvent(new Event('resize'));
-  }, 500);
+//  setTimeout(() => {
+//    window.dispatchEvent(new Event('resize'));
+//  }, 500);
  console.log('✅ Live2D 已修复：位置、大小、坐标系');
 }, 2500);
