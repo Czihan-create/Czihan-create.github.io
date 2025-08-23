@@ -1,31 +1,15 @@
 /* 强制 Live2D 显示在右下角，防遮挡 */
-#live2d-widget,
-#live2d {
+#waifu {
+  position: sticky;
+  top: 0; /* 当滚动到顶部时，元素会固定在这里 */
+  
   /* 强制定位 */
   position: fixed !important;
   bottom: 0 !important;
-  right: 0 !important;
+  right: 25px !important;
   top: auto !important;
   left: auto !important;
 
   /* 层级最高 */
   z-index: 999999 !important;
-
-  /* 防止被裁剪 */
-  overflow: visible !important;
-  pointer-events: auto !important;
-
-  /* 确保可见 */
-  opacity: 1 !important;
-  visibility: visible !important;
-
-  /* 避免被 transform 影响 */
-  transform: none !important;
-  will-change: auto !important;
-}
-
-/* 防止父容器裁剪 */
-body, html {
-  overflow-x: hidden !important;
-  /* 不要给 body 加 transform、perspective 等 */
 }
