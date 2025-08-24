@@ -10,7 +10,7 @@
   background-color: #fafafa;
 }
 
-p.title {
+p.admonition-title {
   position: relative;
   margin: -.6rem -.6rem .8em -.6rem !important;
   padding: .4rem .6rem .4rem 2.5rem;
@@ -18,7 +18,7 @@ p.title {
   background-color:rgba(66, 185, 131, .1);
 }
 
-.title::before {
+.admonition-title::before {
   position: absolute;
   top: .9rem;
   left: 1rem;
@@ -29,15 +29,15 @@ p.title {
   content: ' ';
 }
 
-.info>.title, .todo>.title {
+.info>.admonition-title, .todo>.admonition-title {
   background-color: rgba(0,184,212,.1);
 }
 
-.warning>.title, .attention>.title, .caution>.title {
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
   background-color: rgba(255,145,0,.1);
 }
 
-.failure>.title, .missing>.title, .fail>.title, .error>.title {
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
   background-color: rgba(255,82,82,.1);
 }
 
@@ -53,17 +53,17 @@ p.title {
   border-color: #ff5252;
 }
 
-.info>.title::before, .todo>.title::before {
+.info>.admonition-title::before, .todo>.admonition-title::before {
   background-color: #00b8d4;
   border-radius: 50%;
 }
 
-.warning>.title::before, .attention>.title::before, .caution>.title::before {
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
   background-color: #ff9100;
   border-radius: 50%;
 }
 
-.failure>.title::before,.missing>.title::before,.fail>.title::before,.error>.title::before{
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
   background-color: #ff5252;;
   border-radius: 50%;
 }
@@ -72,11 +72,7 @@ p.title {
   margin-bottom: 0 !important;
 }
 
-/*引用样式的更改*/
+/*!important;*/
 blockquote {
-  box-sizing: border-box;
-  margin: 1.6em 0 1.6em 0em;
-  padding: 0 0 0 1.6em;
-  border-left: #eee 0.3em solid !important;
-  background-color: cssrgba(var(--primary-rgb), 0.03);
+  border-left-color: #eee !important;
 }
