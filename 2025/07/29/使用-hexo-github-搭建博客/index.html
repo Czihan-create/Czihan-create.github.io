@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="zh-CN" theme="default"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="奇寒"><title>使用 Hexo + Github 搭建博客 · 奇寒的博客</title><meta name="description" content="前言
+
+声明
+这篇文章更倾向于是一篇博客搭建经历，可能并不能作为一个很好的教程。
+
+我很早之前就有过一个想要搭建自己博客的想法，但因为电脑是 32 位一直没能实现。
+直到这天，我突然想起我的树莓派，它是 64 位的，也就是说它可以完成这些操作，于是我便开始了实践……
+
+
+
+
+
+准备工作
+如果您已经完"><meta name="keywords" content="Blog,博客,Hexo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta id="site_data_static" data-url="/"><meta name="renderer" content="webkit"><link rel="shortcut icon" type="image/x-icon" href="/images/logo@2x.webp"><link rel="stylesheet" href="/js_complied/bundle.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"><script src="/js_complied/bundle.js"></script><script>Anatolo.comment.setConfig({"valine":{"enable":false,"appid":"6M8tIyUQAgtcNfitBaGtifhE-MdYXbMMI","appkey":"on8JDsnnZS9g2rqIuE7R1QIE","notify":false,"verify":true,"avatar":"mm","placeholder":"请输入评论。注意，请注意用语文明，打造良好的网络环境。","visitor":true},"gitment":{"enable":false,"owner":"Czihan-create","repo":"my-blog-comments","client_id":"Ov23lidV12YN4LTMRSbI","client_secret":"a9ae8e6c39591d5885f98122fba93a749e66bfda"},"gitalk":{"enable":false,"owner":"Czihan-create","repo":"my-blog-comments","client_id":"Ov23lidV12YN4LTMRSbI","client_secret":"a9ae8e6c39591d5885f98122fba93a749e66bfda"},"duoshuo":null,"disqus":null,"gentie":null})</script><!--kbn--><link rel="stylesheet" type="text/css" href="/css/kbn.css"><!--https://fastly.jsdelivr.net/npm/live2d-widgets@0/autoload.js--><script src="/js/kbn.js"></script><!--MarkDown--><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"><link rel="stylesheet" type="text/css" href="/css/container.css"><meta name="generator" content="Hexo 7.3.0"></head><body> <main-outlet><div class="page-top animated"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li><li><a href="/project">项目</a></li><li><a href="/links">友链</a></li><li><a href="/about">关于</a></li></div><div class="information"><div class="nav_right_btn"><li class="btn-toggle-more"><i class="fa fa-ellipsis"></i></li><li class="btn-go-back"><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li><li class="btn-search"><a class="fa fa-search" onclick="Anatolo.search.openWindow();"></a></li><li class="btn-toggle-theme"><a class="far fa-sun" onclick="Anatolo.darkLightToggle();"></a></li></div><div class="avatar"><img src="/images/logo_q.png"></div></div></div><div class="toc-mobile"><div class="toc-button"><span>目录</span></div><div class="toc-container in-page animated fadeInDown"><div class="toclist-container"><div class="tocmenu"><ol class="toclist"><li class="toclist-item toclist-level-4"><a class="toclist-link" href="#%E5%89%8D%E8%A8%80"><span class="toclist-text">前言</span></a></li><li class="toclist-item toclist-level-4"><a class="toclist-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toclist-text">准备工作</span></a></li><li class="toclist-item toclist-level-4"><a class="toclist-link" href="#%E9%85%8D%E7%BD%AE-Hexo-%E5%8D%9A%E5%AE%A2"><span class="toclist-text">配置 Hexo 博客</span></a></li><li class="toclist-item toclist-level-4"><a class="toclist-link" href="#%E5%86%99%E4%BD%9C"><span class="toclist-text">写作</span></a></li></ol></div></div></div></div><div class="sidebar animated"><div class="sidebar-top"><div class="logo-title"><div class="title"><img src="/images/logo_y.png" style="width:220px;" alt="favicon"><h3 title=""><a href="/">奇寒的博客</a></h3><div class="description"><p>一个擅长编程的人（？）</p></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/Czihan-create"><i class="fab fa-github"></i></a></li><li><a href="mailto:Chenzihan0227@126.com"><i class="fa fa-envelope"></i></a></li><li><a target="_blank" rel="noopener" href="https://v.douyin.com/Kdbod4DmXe0/"><i class="fab fa-douyin"></i></a></li></ul></div><div class="toc-container in-sidebar animated fadeInDown"><details class="ltr" open><summary>目录</summary><div class="toclist-container"><div class="tocmenu"><ol class="toclist"><li class="toclist-item toclist-level-4"><a class="toclist-link" href="#%E5%89%8D%E8%A8%80"><span class="toclist-text">前言</span></a></li><li class="toclist-item toclist-level-4"><a class="toclist-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toclist-text">准备工作</span></a></li><li class="toclist-item toclist-level-4"><a class="toclist-link" href="#%E9%85%8D%E7%BD%AE-Hexo-%E5%8D%9A%E5%AE%A2"><span class="toclist-text">配置 Hexo 博客</span></a></li><li class="toclist-item toclist-level-4"><a class="toclist-link" href="#%E5%86%99%E4%BD%9C"><span class="toclist-text">写作</span></a></li></ol></div></div></details></div></div><div class="footer"><div class="p"><span>全站CC-BY-SA-3.0 </span><i class="fa fa-star"></i><span> 奇寒</span></div><div class="by_farbox"><span>Powered by</span><a href="https://hexo.io/zh-cn/" target="_blank"> Hexo</a><span> &</span><a href="https://github.com/Lhcfl/hexo-theme-anatolo" target="_blank"> Anatolo</a></div><div class="beian"></div></div></div><div class="main animated fadeInDown"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated"><div class="post-title"><h3><a>使用 Hexo + Github 搭建博客</a></h3></div><div class="post-content"><p><ul class="lvl-0">
+<li class="lvl-2">
+<h4 id="前言">前言</h4>
+<div class="tip">
+<p><strong>声明</strong></p>
+<p>这篇文章更倾向于是一篇博客搭建经历，可能并不能作为一个很好的教程。</p>
+</div>
+<p>我很早之前就有过一个想要搭建自己博客的想法，但因为电脑是 32 位一直没能实现。<br>
+直到这天，我突然想起我的树莓派，它是 64 位的，也就是说它可以完成这些操作，于是我便开始了实践……</p>
+</li>
+</ul>
+<hr>
+<ul class="lvl-0">
+<li class="lvl-2">
+<h4 id="准备工作">准备工作</h4>
+<p>如果您已经完成以下准备工作，可以直接从 <a href="#%E9%85%8D%E7%BD%AE-hexo-%E5%8D%9A%E5%AE%A2">配置 Hexo 博客</a> 开始。</p>
+<ol>
+<li class="lvl-7">
+<p>去 <a target="_blank" rel="noopener" href="https://git-scm.com/downloads">git 官网</a> 下载安装 git。</p>
+</li>
+<li class="lvl-7">
+<p>去 <a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download">Node.js 官网</a> 下载安装 Node.js，其中最后一个空建议选 <code>npm</code>，方便后续操作。</p>
+</li>
+<li class="lvl-7">
+<p>注册 github 账号：</p>
+<ol>
+<li class="lvl-11">
+<p>打开 <a target="_blank" rel="noopener" href="https://github.com/signup">github 注册页</a>。如果打不开或者加载很慢的话，可以搜索 <code>steam++</code>；实在不行就自行百度其他方法吧。（注册完成之后可以访问 <code>https://kkgithub.com</code>，再这在登录一遍，他的效果和官网 github 是一样的（除了不能注册），访问速度有可能会更快）</p>
+</li>
+<li class="lvl-11">
+<p>如图填写相应内容进行注册（我这是用插件翻译后的效果，github是纯英文的，原页面不长这样，但要求和须填写的内容是一样的）。<img src="%E5%A1%AB%E5%86%99%E6%B3%A8%E5%86%8C.png" alt="填写注册">其中邮箱的话 QQ 邮箱就行（对于没有邮箱的人群），至于如何注册邮箱，请自行百度。最好（或是说一定）不要用临时邮箱！</p>
+</li>
+<li class="lvl-11">
+<p>之后他会验证你的账户（是这样吧？），然后会给你的邮箱发一封邮件，同时显示如图页面，你只要将邮件里的验证码填入其中就行（应该很好找，不会英文都行，我没记错的话应该是纯数字。当然如果有找不到或者觉得有必要单独说明在哪的，可以提出。）。<img src="%E9%AA%8C%E8%AF%81%E7%A0%81.png" alt="验证码">之后我没记错的话应该是就注册好了。</p>
+</li>
+</ol>
+</li>
+<li class="lvl-7">
+<p>打开命令行（<code>Windows</code>就按快捷键 <kbd>win</kbd> + <kbd>R</kbd> 调出运行框，输入 <code>CMD</code>），输入以下命令，安装Hexo。</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-7">
+<p><strong>【可选】</strong> 全文涉及网站大多均为国外网站，作者提供的网址已经尽力多为官方中文页面了，但仍有少量英语页面，不善英语者可安装翻译器浏览器插件。<br>
+Google 浏览器推荐使用 <a target="_blank" rel="noopener" href="https://chrome.zzzmh.cn/info/bpoadfkcbjbfhfodiogcnhhhpibjhbnh">沉浸式翻译:双语对照网页翻译&amp;PDF文档翻译</a>，不会安装可以去看 <a href="/2025/07/31/google-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B">安装教程</a>。有条件的可以直接去 <a target="_blank" rel="noopener" href="https://chromewebstore.google.com/detail/bpoadfkcbjbfhfodiogcnhhhpibjhbnh">谷歌应用商店</a> 安装。<strong>（不是广告）</strong><br>
+其他浏览器就不说了，在插件库（类似）里应该都能找到和安装相关插件。</p>
+</li>
+</ol>
+</li>
+<li class="lvl-2">
+<h4 id="配置-Hexo-博客">配置 Hexo 博客</h4>
+<p>完成准备工作之后，就可以初始化博客了。</p>
+<ol>
+<li class="lvl-7">
+<p>在任意地方新建一个文件夹（也可以不新建，但请确保你所创建博客的文件夹内是空的）。</p>
+</li>
+<li class="lvl-7">
+<p>打开命令行（别关，后面都会用到），输入下面这行代码，转到你要创建博客的地址并初始化博客。</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> &lt;你文件夹相对或绝对地址&gt;</span><br><span class="line">hexo init (这里也可以加上文件夹的绝对路径）</span><br></pre></td></tr></table></figure>
+<p>如果你不清楚什么是相对地址或者不会获取，建议写绝对地址。绝对地址一般打开这个文件夹时地址栏显示的就是，双击选中，然后再复制就行；或者右键该文件夹，查看属性（类似），绝对路径应该会在里面。<br>
+另外，这篇文章和相关项目所有的命令如无特殊声明，都是在这个客的根目录下完成的，如果一不小心使目录便成了其他目录，请输入以下代码返回博客的根目录。<br>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> &lt;你文件夹相对或绝对地址&gt;</span><br></pre></td></tr></table></figure></p>
+</li>
+<li class="lvl-7">
+<p><strong>【可选】</strong> 接下来，你可以打开 <code>&lt;你的博客根目录&gt;/_config.yml</code> 这个文件，自己配置博客。具体参数因为篇幅限制不赘述，可以去 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">官方文档</a> 看看。</p>
+</li>
+<li class="lvl-7">
+<p><strong>【可选】</strong> 如果你希望有界面上的大变化可以安装主题，具体安装方法一般会在该主题的文档（README）中。Hexo 目前的默认主题是 <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-theme-landscape">landscape</a>，在 <a target="_blank" rel="noopener" href="https://hexo.io/themes/">官方的主题库</a> 中收录了许多好看的主题，这个博客所用的主题是 <a target="_blank" rel="noopener" href="https://github.com/Lhcfl/hexo-theme-anatolo">hexo-theme-Anatolo</a>。请注意，安装完主题后一定要将 <code>&lt;你博客的根目录&gt;/_config.yml</code> 中的 <code>theme</code>的值改为你要用的主题的名称，注意大小写。</p>
+</li>
+<li class="lvl-7">
+<p><strong>【可选】</strong> 如果你希望博客能有一些新功能你可以安装插件，具体安装、配置方法一般会在该拓展的文档（README）中，记得一定要在将 <code>&lt;你博客的根目录&gt;/_config.yml</code> 中的 <code>Plugins</code>的值加上这个插件的名称，注意大小写。</p>
+</li>
+<li class="lvl-7">
+<p><strong>【可选】</strong> 自定义设置。由于有些复杂，对于新手来说难度太大（我绝对不会告诉你是因为我自己也没怎么懂），暂时不写。</p>
+</li>
+</ol>
+</li>
+<li class="lvl-2">
+<h4 id="写作">写作</h4>
+<p>编写一般分为多种，这里只介绍默认的 3 种：</p>
+<ul class="lvl-2">
+<li class="lvl-6">
+<p>页面。顾名思义，就是编写一个页面（如友链页面、关于界面等），而非文章，其一般可以在命令框中输入以下命令创建，其相关文件一般会生成在 <code>&lt;你博客的根目录&gt;/source/&lt;你生成文件时设定的标题（目录名）&gt;</code> 中，你可以打开里面的 <code>.md</code> 进行编写。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n page <span class="string">&quot;&lt;你给这篇文章取的标题（目录名）&gt;&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</p></div><div class="post-footer"><div class="tip">本文采用CC-BY-SA-3.0协议，转载请注明出处<br>作者: 奇寒</div><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2025-07-29</span><i class="fa fa-tag"></i><a class="tag" href="/tags/日常记录/" title="日常记录">日常记录 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/编程/" title="编程">编程 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/笔记/" title="笔记">笔记 </a><i class="fa fa-tag"></i><a class="tag" href="/tags/教程/" title="教程">教程 </a><span>大约1555个字, 5分钟11秒读完</span></div></div></div></div><div class="share"><div class="share-btn linkonly"><a class="fa fa-link" onclick="Utils.copyToClipboard(window.location.href)" ref="sidebar"></a></div><div class="share-btn evernote"><a class="fa fa-share" onclick="Anatolo.share.native()" ref="sidebar"></a></div><div class="share-btn weibo"><a class="fab fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="share-btn twitter"><a class="fab fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/intent/tweet?text=%E5%88%86%E4%BA%AB%E6%96%87%E7%AB%A0%EF%BC%9A%0A%0A%E5%A5%87%E5%AF%92%E7%9A%84%E5%8D%9A%E5%AE%A2%20%C2%B7%20%E4%BD%BF%E7%94%A8%20Hexo%20+%20Github%20%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%0Ahttps://czihan-create.github.io/2025/07/29/%E4%BD%BF%E7%94%A8-hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%0A"></a></div><div class="share-btn mastodon"><a class="fab fa-mastodon" target="_blank" rel="noopener" href="https://mastodonshare.com/?text=%E5%88%86%E4%BA%AB%E6%96%87%E7%AB%A0%EF%BC%9A%0A%0A%E5%A5%87%E5%AF%92%E7%9A%84%E5%8D%9A%E5%AE%A2%20%C2%B7%20%E4%BD%BF%E7%94%A8%20Hexo%20+%20Github%20%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%0Ahttps://czihan-create.github.io/2025/07/29/%E4%BD%BF%E7%94%A8-hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%0A"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2025/07/31/%E6%B8%B8%E6%88%8F%E6%9E%84%E6%83%B3/" title="游戏构想">上一篇</a></li></ul></div><!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/mdui@2.1.4/mdui.css" />
+    <script src="https://unpkg.com/mdui@2.1.4/mdui.global.js"></script>
+</head>
+<body>
+    <mdui-card class="mdui-theme-dark" style="width: auto;">
+    <h1>评论</h1>
+    <mdui-card>
+            <h3>发表评论</h3>
+            <mdui-text-field id="nickname" label="昵称" required style="width: auto;" helper="你在评论区所显示的昵称"></mdui-text-field>
+            <mdui-select id="Contact-Information" variant="outlined" value="item-1" label="联系方式" style="width: auto;" helper="你要填写的联系方式类型">
+                <mdui-menu-item value="item-1">邮箱</mdui-menu-item>
+                <mdui-menu-item value="item-2">电话</mdui-menu-item>
+            </mdui-select>
+            <mdui-text-field id="contact" label="联系方式" type="email" required style="width: auto;"><span slot="helper" style="color: red">为方便联系，请确保真实性</span></mdui-text-field>
+            <mdui-text-field id="avatar" label="头像URL" type="url" style="width: auto;"><span slot="helper" style="color: blue">为请确保能正确显示头像，请正确输入头像正常可访问的直链</span></mdui-text-field>
+            <br><br>
+            <mdui-text-field id="comment" label="评论内容" required autosize maxlength="90000" counter min-rows="5" max-rows="13"></mdui-text-field><br>
+            <mdui-button variant="filled" id="release" disabled loading>发布评论</mdui-button>
+            <button onclick="submitComment()">发布评论</button><br><br>
+        </mdui-card><br><br>
+        <mdui-card>
+            <h3>评论区</h3>
+            <div class="comment-list" id="comments">评论加载中……<mdui-linear-progress></mdui-linear-progress></div>
+            <noscript>由于禁用了 javascript，所以无法正常加载评论，请打开 javascript 后刷新试试。</noscript>
+            <button onclick="last()">上一页</button>
+            <button onclick="next()">下一页</button><hr>
+            <p>本评论区采用匿名发布，不会专门收集您的隐私或真实信息（如果您提供的是虚假的的话）。（我也没那能耐）</p>
+            <strong>另：别搞评论区的数据库（虽然不是我的）。</strong>
+            <p>此评论区仍在开发中，仅供测试，有大量问题。由于我懒得写，很多功能，请见谅，后面会一步步加。</p>
+        </mdui-card>
+    </mdui-card>
+    <script>
+    (function() {
+        // ==================== 配置区（根据需求修改）====================
+        const config = {
+        // 三个输入框的DOM元素
+        inputs: [
+            document.querySelector('#nickname'),
+            document.querySelector('#contact'),
+            document.querySelector('#comment')
+        ],
+        // 单个输入框“满足条件”的判断（返回true=满足）
+        isInputValid: (input) => {
+            input.checkValidity(); // 触发原生验证
+            return input.validity.valid; // 可替换为自定义逻辑（如非空、格式等）
+        },
+        delay: 50, // 防抖延迟（ms）
+        onAllValid: () => {
+            // 三个都满足时执行（如启用提交按钮）
+            release.disabled = false; // 启用提交按钮
+        },
+        onAllInvalid: () => {
+            // 三个都不满足时执行（如禁用提交按钮+显示警告）
+            release.disabled = true; // 禁用提交按钮
+        }
+        };
+        // ======================================================================
+
+        // 状态变量（标记当前状态，避免重复执行）
+        let allValid = false; // 是否“全部满足”
+        let allInvalid = false; // 是否“全部不满足”
+        let debounceTimer = null; // 防抖定时器
+
+        // 统一检查：同时判断“全部满足”和“全部不满足”
+        function checkAllInputs() {
+        // 1. 检查每个输入框的状态（满足/不满足）
+        const inputStates = config.inputs.map(input => {
+            return config.isInputValid(input); // 返回数组：[true, false, ...]（true=满足）
+        });
+
+        // 2. 判断“全部满足”（所有输入框都返回true）
+        const allSatisfied = inputStates.every(state => state === true);
+        // 3. 判断“全部不满足”（所有输入框都返回false）
+        const allNotSatisfied = !inputStates.every(state => state === true);
+
+        // 4. 处理“全部满足”的状态变化（从“不满足”→“满足”时执行）
+        if (allSatisfied && !allValid) {
+            config.onAllValid();
+            allValid = true;
+        } else if (!allSatisfied) {
+            allValid = false; // 只要有一个不满足，重置“全部满足”状态
+        }
+
+        // 5. 处理“全部不满足”的状态变化（从“不满足”→“全部不满足”时执行）
+        if (allNotSatisfied && !allInvalid) {
+            config.onAllInvalid();
+            allInvalid = true;
+        } else if (!allNotSatisfied) {
+            allInvalid = false; // 只要有一个满足，重置“全部不满足”状态
+        }
+        }
+
+        // 防抖处理：用户停止输入后检查
+        function handleInputChange() {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(checkAllInputs, config.delay);
+        }
+
+        // 为每个输入框绑定事件（监听输入变化）
+        config.inputs.forEach(input => {
+        input.addEventListener('input', handleInputChange); // 实时输入
+        input.addEventListener('change', handleInputChange); // 失焦时
+        });
+
+        // 初始化检查（页面加载时执行一次）
+        checkAllInputs();
+
+        // 页面卸载时清理
+        window.addEventListener('beforeunload', () => {
+        clearTimeout(debounceTimer);
+        config.inputs.forEach(input => {
+            input.removeEventListener('input', handleInputChange);
+            input.removeEventListener('change', handleInputChange);
+        });
+        });
+    })();
+    </script>
+    <script>
+        const contact_information = document.querySelector('#Contact-Information');
+
+        contact_information.addEventListener('change', () => {
+            if (contact_information.value === 'item-1') {
+                contact.type = 'email';
+            } else {
+                contact.type = 'tel';
+            }
+        });
+        const substrings = [".jpg", ".png",".jpeg",".gif",".bmp",".svg",".webp",".ico",".tif",".tiff"];
+        window.page = 1;
+        const baseUrl = 'https://tinywebdb.appinventor.space/api';
+        const user = 'comment';
+        const secret = '94c2b464';
+        const defaultAvatar = 'https://res.126.net/cross/avatar_uploader/noface_new.gif';
+        const tagPrefix = CryptoJS.SHA256(window.location.href).toString();
+
+        async function submitComment() {
+            const nickname = nickname.value || '匿名用户';
+            const contact = contact.value || '无';
+            const avatarInput = avatar.value;
+            const content = comment.value;
+            let tag;
+            while (true) {
+                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                let result = '';
+                for (let i = 10; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+                tag = `${tagPrefix}${result}`;
+                try {
+                    const response = await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=get&tag=${encodeURIComponent(tag)}`);
+                    const data = await response.json();
+                    if (data.includes("null")) break;
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                    break;
+                }
+            }
+
+            const isValidUrl = (str) => {
+                try {
+                    new URL(str);
+                    return true;
+                } catch (_) {
+                    return false;
+                }
+            };
+
+            const avatar = isValidUrl(avatarInput)&&substrings.some(substring => avatar.includes(substring)) ? avatarInput : '';
+            const timestamp = new Date().toISOString();
+
+            const commentData = { 
+                nickname, 
+                contact, 
+                avatar, 
+                content: content
+                    .replace(/</g, '<p><')
+                    .replace(/>/g, '></p>')
+                    .replace(/\n|\r\n/g, '<br>'),
+                timestamp 
+            };
+
+            try {
+                const response = await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=update&tag=${encodeURIComponent(tag)}&value=${encodeURIComponent(JSON.stringify(commentData))}`, {
+                    method: 'GET'
+                });
+                if (response.ok) {
+                    alert('评论发布成功');
+                    loadComments(); // 自动重新加载评论
+                } else {
+                    alert('评论发布失败');
+                }
+            } catch (error) {
+                console.error('Error submitting comment:', error);
+                alert('评论发布失败');
+            }
+        }
+
+        async function loadComments() {
+            try {
+                const response = await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=search&tag=${tagPrefix}&type=value&count=7&no=${window.page}`);
+                const data = await response.json();
+                if (!data || data.value === null || !Array.isArray(data.value)) {
+                    document.getElementById('comments').innerHTML = '<p>暂无评论</p>';
+                    return;
+                }
+
+                const commentsContainer = document.getElementById('comments');
+                commentsContainer.innerHTML = '';
+                data.value.forEach(commentStr => {
+                    try {
+                        const comment = JSON.parse(commentStr);
+                        const substrings = [".jpg", ".png",".jpeg",".gif",".bmp",".svg",".webp",".ico",".tif",".tiff"];
+                        const avatar = isValidUrl(comment.avatar)&&substrings.some(substring => avatar.includes(substring)) ? comment.avatar : '';
+                        const commentItem = document.createElement('div');
+                        commentItem.className = 'comment-item';
+                        commentItem.innerHTML = `
+                            <mdui-avatar src="${comment.avatar}"></mdui-avatar>
+                            <div class="comment-content">
+                                <strong>${comment.nickname}</strong><br><br>
+                                ${comment.content}<hr>
+                                <small>联系方式：${comment.contact}<br>发布于 ${new Date(comment.timestamp).toLocaleString()}</small>
+                            </div>
+                        `;
+                        commentsContainer.appendChild(commentItem);
+                    } catch (parseError) {
+                        console.error('Error parsing comment:', parseError);
+                    }
+                });
+            } catch (error) {
+                console.error('Error loading comments:', error);
+                document.getElementById('comments').innerHTML = '<p>加载评论失败</p>';
+            }
+        }
+        async function last() {
+            if (window.page > 7){
+                window.page -= 7;
+                loadComments();
+            }else{
+                alert("已经是第一页了");
+            }
+            return;
+        }
+        async function next() {
+                const response = await fetch(`${baseUrl}?user=${user}&secret=${secret}&action=search&tag=${tagPrefix}&type=value&count=7&no=${window.page+10}`);
+                const data = await response.json();
+                if (!data || data.value === null || !Array.isArray(data.value)) {
+                    alert("已经是最后一页了");
+                    return;
+                }
+            window.page += 7;
+            loadComments();
+            return;
+        }
+        // 加载初始评论
+        loadComments();
+    </script>
+</body>
+</html><script>Anatolo.comment.setConfig({"valine":{"enable":false,"appid":"6M8tIyUQAgtcNfitBaGtifhE-MdYXbMMI","appkey":"on8JDsnnZS9g2rqIuE7R1QIE","notify":false,"verify":true,"avatar":"mm","placeholder":"请输入评论。注意，请注意用语文明，打造良好的网络环境。","visitor":true},"gitment":{"enable":false,"owner":"Czihan-create","repo":"my-blog-comments","client_id":"Ov23lidV12YN4LTMRSbI","client_secret":"a9ae8e6c39591d5885f98122fba93a749e66bfda"},"gitalk":{"enable":false,"owner":"Czihan-create","repo":"my-blog-comments","client_id":"Ov23lidV12YN4LTMRSbI","client_secret":"a9ae8e6c39591d5885f98122fba93a749e66bfda"},"duoshuo":null,"disqus":null,"gentie":null})</script></div></div></div></div></main-outlet><script>(async function(){ if (Anatolo.search == null) await Anatolo.getMsg("search-init"); Anatolo.search.config = {translation:{posts:"文章",pages:"页面",categories:"分类",tags:"标签",untitled:"(无标题)",} }; })()</script><div class="searchbox ins-search modal-cover"><div class="searchbox-container ins-search-container modal-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="Anatolo.search.closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div><button class="float-button hide" id="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" type="button" title="回到顶部"><i class="fa fa-angle-up"></i></button><div class="modal-cover" id="success-indicator"><div class="modal-container indicator"><i class="fa fa-check"></i></div></div></body></html>

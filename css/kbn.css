@@ -1,0 +1,11 @@
+/* 强制 Live2D 显示在右下角，防遮挡 */
+#waifu {
+  /* 强制定位 */
+  position: fixed !important;
+  right: 25px !important;
+  top: auto !important;
+  left: auto !important;
+
+  /* 层级最高 */
+  z-index: 999999 !important;
+}
